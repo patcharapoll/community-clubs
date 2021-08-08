@@ -1,0 +1,42 @@
+version: '3'
+services:
+
+  #Service Auth
+  service-auth:
+    build:
+      context: ./
+      dockerfile: ./dockerfile.dev
+    command: npm run debug:server
+    volumes:
+      - ./:/usr/src/app
+    depends_on: 
+      - postgres
+    ports:
+    - "9101:9000"
+    environment:
+      NODE_PORT: 9000
+      NODE_ENV: "development"
+      DB_NAME: "arv-club"
+      DB_USERNAME: "arvdev"
+      DB_PASSWORD: "1qazxsw2"
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DIALECT: "postgres"
+      PASSPHRASE: "arv"
+
+  #PostgreSQL
+  postgres:
+    image: postgres:latest
+    volumes:
+      - ./db.sql:/docker-entrypoint-initdb.d/db.sql
+      - ./postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+    environment:
+      - "POSTGRES_DB=arv-club"
+      - "POSTGRES_USER=arvdev"
+      - "POSTGRES_PASSWORD=1qazxsw2"
+    restart: always
+
+volumes:
+  postgres-data:
