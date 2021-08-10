@@ -1,5 +1,5 @@
 import { Service } from "typedi";
-import AuthService from "../services/auth.service";
+import AuthService from "../services/auth";
 import {
     LoginRequest,
 } from '../interfaces'

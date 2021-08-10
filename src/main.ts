@@ -16,7 +16,7 @@ const schemaWithMiddleware = applyMiddleware(
   schema,
   isLoggedIn,
   logInput,
-  logResult
+  logResult,
 )
 
 const server = new ApolloServer({

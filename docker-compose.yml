@@ -3,6 +3,7 @@ services:
 
   #Service Auth
   service-auth:
+    container_name: service-auth
     build:
       context: ./
       dockerfile: ./dockerfile.dev
@@ -26,6 +27,7 @@ services:
 
   #PostgreSQL
   postgres:
+    container_name: postgres
     image: postgres:latest
     volumes:
       - ./db.sql:/docker-entrypoint-initdb.d/db.sql

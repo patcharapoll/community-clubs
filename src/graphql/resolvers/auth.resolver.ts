@@ -4,15 +4,16 @@ import {
     MutationRegisterArgs,
     QueryLoginArgs,
 } from '../generated'
-import { authController } from '../../containers'
+import { authController, clientController } from '../../containers'
 import {
     LoginRequest,
-} from '../../core/auth/interfaces'
+} from '../../modules/auth/interfaces'
 
 export const AuthResolvers: IResolvers = {
   Query: {
     async login (_: void, args: QueryLoginArgs): Promise<AuthenticateResponse> {
-      console.log(args);
+      // const data123 = await clientController.findOne({client_id: '555', client_secret: '234'});
+
       const data: LoginRequest = {
           username: '',
           password: '',

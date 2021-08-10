@@ -5,6 +5,7 @@ import * as authTypeDefs from './schemas/auth.graphql'
 import { makeExecutableSchema } from 'graphql-tools'
 import resolvers from './resolversMap'
 import { GraphQLSchema } from 'graphql'
+
 const schema: GraphQLSchema = makeExecutableSchema({
   typeDefs: [
     emptyTypeDefs,
