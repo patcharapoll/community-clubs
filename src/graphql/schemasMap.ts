@@ -5,6 +5,7 @@ import * as authTypeDefs from './schemas/auth.graphql'
 import { makeExecutableSchema } from 'graphql-tools'
 import resolvers from './resolversMap'
 import { GraphQLSchema } from 'graphql'
+import directiveResolvers from '../middleware/directives'
 
 const schema: GraphQLSchema = makeExecutableSchema({
   typeDefs: [
@@ -12,6 +13,7 @@ const schema: GraphQLSchema = makeExecutableSchema({
     userTypeDefs,
     authTypeDefs,
   ],
-  resolvers
+  resolvers,
+  directiveResolvers,
 })
 export default schema

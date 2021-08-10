@@ -1,11 +1,18 @@
+directive @isAuthenticated on QUERY | FIELD | FIELD_DEFINITION
+directive @hasScope(scope: [String]) on QUERY | FIELD | FIELD_DEFINITION
+
 extend type Query {
-    login(email: String!, password: String!): AuthenticateResponse!
+    login(username: String!, password: String!): AuthenticateResponse! @isAuthenticated
 }
 
 extend type Mutation {
-    logout(email: String!, password: String!): AuthenticateResponse!
+    logout(username: String!, password: String!): AuthenticateResponse!
 }
 
 type AuthenticateResponse {
     token: String!
+    message: String,
+    expires_id: String,
+    refresh_token: String!,
+    tokenType: String,
 }
